@@ -3,10 +3,14 @@ import java.util.Scanner;
 
 public class Calculator {
     Scanner in;
-    private ArrayList<Team> teams = new ArrayList<Team>();
+    private FileReader fileReader;
+    private ArrayList<Team> teams;
 
     public Calculator(){
         in = new Scanner(System.in);
+        fileReader = new FileReader();
+        fileReader.read();
+        teams = fileReader.getTeams();
     }
 
     public void execute() {
@@ -89,7 +93,7 @@ public class Calculator {
         int count = 0;
         for (Team team : teams) {
             count++;
-            System.out.println(count + "." + team.getTeamName() + " - " + team.getScore() + "\n");
+            System.out.printf("%d. %s - %.2f\n", count, team.getTeamName(), team.getScore());
         }
     }
 }
